@@ -1,6 +1,6 @@
 import pymysql
 
-def fetch_database_structure():
+def fetch_database_structure()->dict['table':{'field':[str]}]:
     try:
         # Connect to MySQL
         conn = pymysql.connect(
@@ -16,7 +16,7 @@ def fetch_database_structure():
         cursor.execute("SHOW TABLES;")
         tables = cursor.fetchall()
 
-        print("✅ Successfully connected to MySQL!")
+        print("Successfully connected to MySQL!")
         print("Tables in database SNU:")
 
         # Dictionary to store table structures
@@ -24,7 +24,7 @@ def fetch_database_structure():
 
         for table in tables:
             table_name = table[0]
-            print(f"\n🔹 Table: {table_name}")
+            print(f"\nTable: {table_name}")
             
             # Fetch table schema
             cursor.execute(f"DESC {table_name};")
@@ -56,7 +56,7 @@ def fetch_database_structure():
             database_structure[table_name] = column_details
 
         # Print dictionary
-        #print("\n📌 Database Structure as Dictionary:")
+        #print("\nDatabase Structure as Dictionary:")
         #for table,disc in database_structure.items():
         #    print(f"{table}: {disc}\n")
 
@@ -66,7 +66,7 @@ def fetch_database_structure():
         return database_structure
 
     except pymysql.MySQLError as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
 
 
-print(fetch_database_structure())
+#print(fetch_database_structure())
