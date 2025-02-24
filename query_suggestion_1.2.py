@@ -20,19 +20,6 @@ def is_placeholder(word:str)->bool:
     """ Checks if a word is a placeholder (like [field1], [table], [value]) """
     return bool(re.match(r'\[.*?\]', word))  # Matches words enclosed in []
 
-#retuns true even the variables like r'\[.*?\]' present in the query
-#return false if other tokens is not matched
-def is_token_matched_without_variables(tokens:list[str],completed_tokens:list[str])->bool:
-    index = 0
-    for token in tokens[:len(completed_tokens)]:
-        if is_placeholder(token):
-            index+=1
-            continue
-        if token != completed_tokens[index]:
-            return False
-        index+=1
-    return True
-
 def find_suggestions(tokenized_queries:list[list[str]], completed_tokens:list[str], current_word:str)->list[str]:
     #print(f"\nCall : {completed_tokens}, {current_word}")
     """ Finds next possible words for autocompletion """
@@ -43,10 +30,8 @@ def find_suggestions(tokenized_queries:list[list[str]], completed_tokens:list[st
         #token: each line [toknized]
         if len(tokens) > len(completed_tokens):
             #here it should be modified...[filed1]...[value]..[table] should be ignore in tokenized_quries 
-            
-            #print(f"\n{is_token_matched_without_variables(tokens,completed_tokens)}")
-            if is_token_matched_without_variables(tokens,completed_tokens):
-            #if tokens[:len(completed_tokens)] == completed_tokens:
+        
+            if tokens[:len(completed_tokens)] == completed_tokens:
                 next_token = tokens[len(completed_tokens)]
 
                 # If it's a placeholder, allow user to type anything and still suggest the next keyword
