@@ -1,0 +1,172 @@
+CREATE TABLE students (id INT PRIMARY KEY, name VARCHAR(50), age INT, marks DECIMAL(5,2));
+
+CREATE TABLE employees (emp_id INT PRIMARY KEY, emp_name VARCHAR(50), salary DECIMAL(10,2), department VARCHAR(50));
+
+CREATE TABLE products (product_id INT PRIMARY KEY, product_name VARCHAR(100), price DECIMAL(10,2), stock INT);
+
+CREATE TABLE orders (order_id INT PRIMARY KEY, customer_id INT, order_date DATE, total_amount DECIMAL(10,2));
+
+CREATE TABLE customers (customer_id INT PRIMARY KEY, customer_name VARCHAR(100), email VARCHAR(100), phone VARCHAR(15));
+
+CREATE TABLE departments (dept_id INT PRIMARY KEY, dept_name VARCHAR(50), location VARCHAR(100));
+
+CREATE TABLE books (book_id INT PRIMARY KEY, title VARCHAR(100), author VARCHAR(100), published_year INT);
+
+CREATE TABLE movies (movie_id INT PRIMARY KEY, title VARCHAR(100), director VARCHAR(100), release_year INT);
+
+CREATE TABLE suppliers (supplier_id INT PRIMARY KEY, supplier_name VARCHAR(100), contact_name VARCHAR(100), phone VARCHAR(15));
+
+CREATE TABLE invoices (invoice_id INT PRIMARY KEY, customer_id INT, invoice_date DATE, total_amount DECIMAL(10,2));
+INSERT INTO students (id, name, age, marks) VALUES (1, 'John Doe', 20, 95.5);
+
+INSERT INTO employees (emp_id, emp_name, salary, department) VALUES (101, 'Jane Smith', 50000.00, 'HR');
+
+INSERT INTO products (product_id, product_name, price, stock) VALUES (1001, 'Laptop', 1200.00, 50);
+
+INSERT INTO orders (order_id, customer_id, order_date, total_amount) VALUES (5001, 101, '2023-10-01', 250.00);
+
+INSERT INTO customers (customer_id, customer_name, email, phone) VALUES (201, 'Alice Brown', 'alice@example.com', '123-456-7890');
+
+INSERT INTO departments (dept_id, dept_name, location) VALUES (10, 'Sales', 'New York');
+
+INSERT INTO books (book_id, title, author, published_year) VALUES (1, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925);
+
+INSERT INTO movies (movie_id, title, director, release_year) VALUES (1, 'Inception', 'Christopher Nolan', 2010);
+
+INSERT INTO suppliers (supplier_id, supplier_name, contact_name, phone) VALUES (1, 'Tech Supplies', 'Bob Johnson', '987-654-3210');
+
+INSERT INTO invoices (invoice_id, customer_id, invoice_date, total_amount) VALUES (1001, 201, '2023-10-05', 500.00);
+SELECT * FROM students;
+
+SELECT name, age FROM students WHERE marks > 90;
+
+SELECT * FROM employees WHERE department = 'HR';
+
+SELECT product_name, price FROM products WHERE stock > 10;
+
+SELECT * FROM orders WHERE total_amount > 1000;
+
+SELECT customer_name, email FROM customers WHERE phone LIKE '123%';
+
+SELECT * FROM departments WHERE location = 'New York';
+
+SELECT title, author FROM books WHERE published_year > 2000;
+
+SELECT * FROM movies WHERE director = 'Christopher Nolan';
+
+SELECT supplier_name, phone FROM suppliers WHERE contact_name = 'Bob Johnson';
+
+UPDATE students SET marks = 96.0 WHERE id = 1;
+
+UPDATE employees SET salary = 55000.00 WHERE emp_id = 101;
+
+UPDATE products SET price = 1300.00 WHERE product_id = 1001;
+
+UPDATE orders SET total_amount = 300.00 WHERE order_id = 5001;
+
+UPDATE customers SET email = 'alice.brown@example.com' WHERE customer_id = 201;
+
+UPDATE departments SET location = 'Los Angeles' WHERE dept_id = 10;
+
+UPDATE books SET published_year = 1926 WHERE book_id = 1;
+
+UPDATE movies SET release_year = 2011 WHERE movie_id = 1;
+
+UPDATE suppliers SET phone = '999-888-7777' WHERE supplier_id = 1;
+
+UPDATE invoices SET total_amount = 600.00 WHERE invoice_id = 1001;
+DELETE FROM students WHERE id = 1;
+
+DELETE FROM employees WHERE emp_id = 101;
+
+DELETE FROM products WHERE product_id = 1001;
+
+DELETE FROM orders WHERE order_id = 5001;
+
+DELETE FROM customers WHERE customer_id = 201;
+
+DELETE FROM departments WHERE dept_id = 10;
+
+DELETE FROM books WHERE book_id = 1;
+
+DELETE FROM movies WHERE movie_id = 1;
+
+DELETE FROM suppliers WHERE supplier_id = 1;
+
+DELETE FROM invoices WHERE invoice_id = 1001;
+DROP TABLE students;
+
+DROP TABLE employees;
+
+DROP TABLE products;
+
+DROP TABLE orders;
+
+DROP TABLE customers;
+
+DROP TABLE departments;
+
+DROP TABLE books;
+
+DROP TABLE movies;
+
+DROP TABLE suppliers;
+
+DROP TABLE invoices;
+TRUNCATE TABLE students;
+
+TRUNCATE TABLE employees;
+
+TRUNCATE TABLE products;
+
+TRUNCATE TABLE orders;
+
+TRUNCATE TABLE customers;
+
+TRUNCATE TABLE departments;
+
+TRUNCATE TABLE books;
+
+TRUNCATE TABLE movies;
+
+TRUNCATE TABLE suppliers;
+
+TRUNCATE TABLE invoices;
+SELECT students.name, departments.dept_name FROM students JOIN departments ON students.dept_id = departments.dept_id;
+
+SELECT employees.emp_name, departments.dept_name FROM employees JOIN departments ON employees.dept_id = departments.dept_id;
+
+SELECT orders.order_id, customers.customer_name FROM orders JOIN customers ON orders.customer_id = customers.customer_id;
+
+SELECT products.product_name, suppliers.supplier_name FROM products JOIN suppliers ON products.supplier_id = suppliers.supplier_id;
+
+SELECT invoices.invoice_id, customers.customer_name FROM invoices JOIN customers ON invoices.customer_id = customers.customer_id;
+
+SELECT books.title, authors.author_name FROM books JOIN authors ON books.author_id = authors.author_id;
+
+SELECT movies.title, directors.director_name FROM movies JOIN directors ON movies.director_id = directors.director_id;
+
+SELECT orders.order_id, products.product_name FROM orders JOIN order_details ON orders.order_id = order_details.order_id JOIN products ON order_details.product_id = products.product_id;
+
+SELECT employees.emp_name, projects.project_name FROM employees JOIN projects ON employees.emp_id = projects.emp_id;
+
+SELECT students.name, courses.course_name FROM students JOIN enrollments ON students.id = enrollments.student_id JOIN courses ON enrollments.course_id = courses.course_id;
+SELECT * FROM students WHERE age > 18;
+
+SELECT * FROM employees WHERE salary < 60000;
+
+SELECT * FROM products WHERE price BETWEEN 50 AND 100;
+
+SELECT * FROM orders WHERE order_date = '2023-10-01';
+
+SELECT * FROM customers WHERE email LIKE '%@example.com';
+
+SELECT * FROM departments WHERE location IN ('New York', 'Los Angeles');
+
+SELECT * FROM books WHERE published_year = 1925;
+
+SELECT * FROM movies WHERE release_year > 2000;
+
+SELECT * FROM suppliers WHERE contact_name = 'Bob Johnson';
+
+SELECT * FROM invoices WHERE total_amount > 500;
