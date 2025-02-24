@@ -13,7 +13,7 @@ SELECT [field1], [field2] FROM [table] WHERE [field1] IS NULL;
 SELECT [field1], [field2] FROM [table] WHERE [field1] IS NOT NULL;  
 SELECT [field1], [field2] FROM [table] ORDER BY [field1] ASC;
 SELECT [field1], [field2] FROM [table] ORDER BY [field1] DESC;  
-SELECT [field1], [field2] FROM [table] LIMIT [number];  
+SELECT [field1], [field2] FROM [table] LIMIT [number];
 SELECT [field1], [field2] FROM [table] OFFSET [number];  
 SELECT DISTINCT [field1] FROM [table];  
 SELECT COUNT([field1]) FROM [table];  
@@ -61,8 +61,6 @@ INSERT INTO [table1] ([field1]) SELECT CONCAT([fieldA], [fieldB]) FROM [table2] 
 INSERT INTO [table1] SELECT [field1] FROM [table2] WHERE [field2] = [value] OR [field3] IN (SELECT [field4] FROM [table3] WHERE [field5] > [value]);
 
 
-UPDATE [table] SET [field1] = [value1] WHERE [condition];  
-UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [condition];  
 
 DELETE FROM [table] WHERE [condition];  
 DELETE FROM [table];  
@@ -275,3 +273,239 @@ SELECT * FROM [table] PARTITION ([partition_name]);
  
 SELECT SUM([field1]) FROM [table] WHERE [field2] IN (SELECT [field3] FROM [table2] WHERE [field4] = [value]);
 SELECT [field1], AVG([field2]) FROM [table1] JOIN [table2] ON [table1].[id] = [table2].[id] GROUP BY [field1] HAVING AVG([field2]) > (SELECT MIN([field3]) FROM [table3]);
+
+
+
+
+
+
+
+
+
+
+
+UPDATE [table] SET [field1] = [value1];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] > [value3];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] BETWEEN [value3] AND [value4];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] IN ([value3], [value4], [value5]);
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] LIKE [%value%];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] IS NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE NOT [field3] = [value3];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] OR [field4] = [value4];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] IN (SELECT [field3] FROM [another_table] WHERE [field4] = [value4]);
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] LIMIT [10];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] ORDER BY [field4] DESC LIMIT [5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] BETWEEN [value4] AND [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] IN ([value4], [value5], [value6]);
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] LIKE [%value%];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] IS NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] IS NOT NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] <> [value4];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] > [value4] AND [field5] < [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] OR [field4] = [value4] OR [field5] = [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] <> [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] BETWEEN [value5] AND [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IN ([value5], [value6], [value7]);
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] LIKE [%value%];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NOT NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] > [value5] AND [field6] < [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] OR [field5] = [value5];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] OR [field5] = [value5] OR [field6] = [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] OR [field6] = [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] = [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] <> [value6];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] BETWEEN [value6] AND [value7];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] IN ([value6], [value7], [value8]);
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] LIKE [%value%];
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] IS NULL;
+UPDATE [table] SET [field1] = [value1], [field2] = [value2] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5] AND [field6] IS NOT NULL;
+
+
+
+
+
+
+
+
+
+DELETE FROM [table];
+DELETE FROM [table] WHERE [field1] = [value1];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2];
+DELETE FROM [table] WHERE [field1] = [value1] OR [field2] = [value2];
+DELETE FROM [table] WHERE [field1] > [value1];
+DELETE FROM [table] WHERE [field1] < [value1];
+DELETE FROM [table] WHERE [field1] BETWEEN [value1] AND [value2];
+DELETE FROM [table] WHERE [field1] IN ([value1], [value2], [value3]);
+DELETE FROM [table] WHERE [field1] LIKE [%value%];
+DELETE FROM [table] WHERE [field1] IS NULL;
+DELETE FROM [table] WHERE [field1] IS NOT NULL;
+DELETE FROM [table] WHERE NOT [field1] = [value1];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] > [value2];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] < [value2];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] BETWEEN [value2] AND [value3];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] IN ([value2], [value3], [value4]);
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] LIKE [%value%];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] IS NULL;
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] IS NOT NULL;
+DELETE FROM [table] WHERE [field1] = [value1] OR [field2] = [value2] OR [field3] = [value3];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] <> [value3];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] BETWEEN [value3] AND [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] IN ([value3], [value4], [value5]);
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] LIKE [%value%];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] IS NULL;
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] IS NOT NULL;
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] > [value3] AND [field4] < [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] OR [field3] = [value3];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] OR [field3] = [value3] OR [field4] = [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] OR [field4] = [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] <> [value4];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] BETWEEN [value4] AND [value5];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] IN ([value4], [value5], [value6]);
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] LIKE [%value%];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] IS NULL;
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] IS NOT NULL;
+DELETE FROM [table] WHERE [field1] = [value1] LIMIT [10];
+DELETE FROM [table] WHERE [field1] = [value1] ORDER BY [field2] DESC LIMIT [5];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] LIMIT [10];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] ORDER BY [field3] DESC LIMIT [5];
+DELETE FROM [table] WHERE [field1] IN (SELECT [field1] FROM [another_table] WHERE [field2] = [value2]);
+DELETE FROM [table] WHERE EXISTS (SELECT 1 FROM [another_table] WHERE [another_table].[field1] = [table].[field1]);
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] <> [value5];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] BETWEEN [value5] AND [value6];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] IN ([value5], [value6], [value7]);
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] LIKE [%value%];
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] IS NULL;
+DELETE FROM [table] WHERE [field1] = [value1] AND [field2] = [value2] AND [field3] = [value3] AND [field4] = [value4] AND [field5] IS NOT NULL;
+
+
+
+
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]);
+INSERT INTO [table] ([field1], [field2], [field3]) VALUES ([value1], [value2], [value3]);
+INSERT INTO [table] ([field1], [field2], [field3], [field4]) VALUES ([value1], [value2], [value3], [value4]);
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]), ([value3], [value4]);
+INSERT INTO [table] ([field1], [field2], [field3]) VALUES ([value1], [value2], [value3]), ([value4], [value5], [value6]);
+INSERT INTO [table] ([field1], [field2], [field3], [field4]) VALUES ([value1], [value2], [value3], [value4]), ([value5], [value6], [value7], [value8]);
+INSERT INTO [table] ([field1]) VALUES ([value1]);
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], DEFAULT);
+INSERT INTO [table] ([field1], [field2]) VALUES (DEFAULT, [value2]);
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], NULL);
+INSERT INTO [table] ([field1], [field2]) VALUES (NULL, [value2]);
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] IN ([value3], [value4], [value5]);
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] LIKE [%value%];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] IS NULL;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] IS NOT NULL;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] BETWEEN [value3] AND [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] > [value3];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] < [value3];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] OR [field4] = [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] > [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] < [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] BETWEEN [value4] AND [value5];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] IN ([value4], [value5], [value6]);
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] LIKE [%value%];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] IS NULL;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] IS NOT NULL;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] <> [value4];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] > [value4] AND [field5] < [value5];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] OR [field4] = [value4] OR [field5] = [value5];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] <> [value5];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] BETWEEN [value5] AND [value6];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IN ([value5], [value6], [value7]);
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] LIKE [%value%];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NULL;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NOT NULL;
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) ON DUPLICATE KEY UPDATE [field1] = [value1], [field2] = [value2];
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) ON DUPLICATE KEY UPDATE [field1] = VALUES([field1]), [field2] = VALUES([field2]);
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) ON CONFLICT ([field1]) DO UPDATE SET [field2] = [value2];
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) ON CONFLICT ([field1]) DO NOTHING;
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) RETURNING [field1], [field2];
+INSERT INTO [table] ([field1], [field2]) VALUES ([value1], [value2]) RETURNING *;
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] RETURNING [field1], [field2];
+INSERT INTO [table] ([field1], [field2]) SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3] RETURNING *;
+
+
+
+
+SELECT [field1], [field2] FROM [table];
+SELECT [field1], [field2], [field3] FROM [table];
+SELECT * FROM [table];
+SELECT [field1] FROM [table] WHERE [field2] = [value2];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] > [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] < [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] BETWEEN [value3] AND [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] IN ([value3], [value4], [value5]);
+SELECT [field1], [field2] FROM [table] WHERE [field3] LIKE [%value%];
+SELECT [field1], [field2] FROM [table] WHERE [field3] IS NULL;
+SELECT [field1], [field2] FROM [table] WHERE [field3] IS NOT NULL;
+SELECT [field1], [field2] FROM [table] WHERE NOT [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] OR [field4] = [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] > [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] < [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] BETWEEN [value4] AND [value5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] IN ([value4], [value5], [value6]);
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] LIKE [%value%];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] IS NULL;
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] IS NOT NULL;
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] <> [value4];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] > [value4] AND [field5] < [value5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] OR [field4] = [value4] OR [field5] = [value5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] = [value5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] <> [value5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] BETWEEN [value5] AND [value6];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IN ([value5], [value6], [value7]);
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] LIKE [%value%];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NULL;
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] = [value4] AND [field5] IS NOT NULL;
+SELECT [field1], [field2] FROM [table] ORDER BY [field3] ASC;
+SELECT [field1], [field2] FROM [table] ORDER BY [field3] DESC;
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] ORDER BY [field4] ASC;
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] ORDER BY [field4] DESC;
+SELECT [field1], [field2] FROM [table] LIMIT [10];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] LIMIT [10];
+SELECT [field1], [field2] FROM [table] ORDER BY [field3] DESC LIMIT [5];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] ORDER BY [field4] DESC LIMIT [5];
+SELECT [field1], [field2] FROM [table] GROUP BY [field3];
+SELECT [field1], COUNT(*) FROM [table] GROUP BY [field1];
+SELECT [field1], SUM([field2]) FROM [table] GROUP BY [field1];
+SELECT [field1], AVG([field2]) FROM [table] GROUP BY [field1];
+SELECT [field1], MAX([field2]) FROM [table] GROUP BY [field1];
+SELECT [field1], MIN([field2]) FROM [table] GROUP BY [field1];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] GROUP BY [field1], [field2];
+SELECT [field1], COUNT(*) FROM [table] WHERE [field3] = [value3] GROUP BY [field1];
+SELECT [field1], SUM([field2]) FROM [table] WHERE [field3] = [value3] GROUP BY [field1];
+SELECT [field1], AVG([field2]) FROM [table] WHERE [field3] = [value3] GROUP BY [field1];
+SELECT [field1], MAX([field2]) FROM [table] WHERE [field3] = [value3] GROUP BY [field1];
+SELECT [field1], MIN([field2]) FROM [table] WHERE [field3] = [value3] GROUP BY [field1];
+SELECT [field1], [field2] FROM [table] HAVING COUNT(*) > [1];
+SELECT [field1], [field2] FROM [table] GROUP BY [field1], [field2] HAVING COUNT(*) > [1];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] HAVING COUNT(*) > [1];
+SELECT [field1], [field2] FROM [table] GROUP BY [field1], [field2] HAVING SUM([field3]) > [100];
+SELECT [field1], [field2] FROM [table] GROUP BY [field1], [field2] HAVING AVG([field3]) > [50];
+SELECT [field1], [field2] FROM [table] GROUP BY [field1], [field2] HAVING MAX([field3]) > [200];
+SELECT [field1], [field2] FROM [table] GROUP BY [field1], [field2] HAVING MIN([field3]) < [10];
+SELECT [field1], [field2] FROM [table] JOIN [another_table] ON [table].[field3] = [another_table].[field3];
+SELECT [field1], [field2] FROM [table] INNER JOIN [another_table] ON [table].[field3] = [another_table].[field3];
+SELECT [field1], [field2] FROM [table] LEFT JOIN [another_table] ON [table].[field3] = [another_table].[field3];
+SELECT [field1], [field2] FROM [table] RIGHT JOIN [another_table] ON [table].[field3] = [another_table].[field3];
+SELECT [field1], [field2] FROM [table] FULL OUTER JOIN [another_table] ON [table].[field3] = [another_table].[field3];
+SELECT [field1], [field2] FROM [table] CROSS JOIN [another_table];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] UNION SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] UNION ALL SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] INTERSECT SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] EXCEPT SELECT [field1], [field2] FROM [another_table] WHERE [field3] = [value3];
+SELECT [field1], [field2] FROM [table] WHERE [field3] = [value3] AND [field4] IN (SELECT [field4] FROM [another_table] WHERE [field5] = [value5]);
+SELECT [field1], [field2] FROM [table] WHERE EXISTS (SELECT 1 FROM [another_table] WHERE [another_table].[field3] = [table].[field3]);
