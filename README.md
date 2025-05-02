@@ -64,7 +64,7 @@ Corrects syntax issues like missing semicolons or unmatched parentheses.
 ## 🏗 Architecture Overview
 
 High-level architecture showing user interaction, suggestion engine, and database connection.  
-![Architecture](Documentation/Diagrma/use_case.png)
+![Architecture](Documentation/Diagram/use_case.png)
 
 ---
 
