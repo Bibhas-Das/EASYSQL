@@ -100,16 +100,6 @@ Special thanks to our families, peers, and academic mentors for their support an
 
 ---
 
-## 👥 Contributors
-
-- Bibhas Das  
-- Bikram Lohar  
-- Sarthak Ghosh  
-- Sayak Mondal  
-- Avijit Mondal  
-
----
-
 ## 📄 License
 
 Copyright (c) 2025 Team EASYSQL (Sister Nivedita University)
