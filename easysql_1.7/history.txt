@@ -121,3 +121,9 @@
 
 # 2025-04-30 12:20:51.063851
 +SELECT address, enrollment, registration, name phone_no FROM student 
+
+# 2025-05-02 22:30:09.589827
++selectt address, name FRROM student 
+
+# 2025-05-02 22:33:43.394595
++exit

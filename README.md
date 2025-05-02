@@ -18,15 +18,15 @@ EASYSQL is a terminal-based tool designed to help beginners write correct SQL qu
 
 > 📌 **Suggestion Prompting**  
 Real-time keyword and clause suggestions as the user types.  
-![Suggestion Prompting](Documentation/suggestion_prompt.png)
+![Suggestion Prompting](Documentation/Screen_shot/detect_exack_words.png)
 
 > 📌 **Schema-Aware Completion**  
 Displays relevant table/column names pulled from the connected database.  
-![Schema Completion](Documentation/schema_completion.png)
+![Schema Completion](Documentation/Screen_shot/fifth.png)
 
 > 📌 **Automatic Corrections**  
 Corrects syntax issues like missing semicolons or unmatched parentheses.  
-![Auto Correction](Documentation/query_correction.png)
+![Auto Correction](Documentation/Screen_shot/correction.png)
 
 ---
 
@@ -64,14 +64,14 @@ Corrects syntax issues like missing semicolons or unmatched parentheses.
 ## 🏗 Architecture Overview
 
 High-level architecture showing user interaction, suggestion engine, and database connection.  
-![Architecture](Documentation/architecture.png)
+![Architecture](Documentation/Diagrma/use_case.png)
 
 ---
 
 ## 🧩 Methodology
 
 Includes use case diagrams, suggestion process logic, and backend workflow.  
-![Workflow](Documentation/workflow.png)
+![Workflow](Documentation/Diagram/overal_steps..png)
 
 ---
 
@@ -112,7 +112,13 @@ Special thanks to our families, peers, and academic mentors for their support an
 
 ## 📄 License
 
-MIT License (or add your preferred license here)
+Copyright (c) 2025 Team EASYSQL (Sister Nivedita University)
+
+This project is made available for **academic demonstration purposes only**.  
+Redistribution, modification, or commercial use is **strictly prohibited** without prior written permission.
+
+For licensing inquiries, please contact the authors.
+
 
 ---
 
