@@ -1,0 +1,3 @@
+def checkSyntax(query:str)->str:
+    return query
+    ...

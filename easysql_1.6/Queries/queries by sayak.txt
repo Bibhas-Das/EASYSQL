@@ -1,0 +1,160 @@
+
+alter table [table] add column [field] binary([value]);
+alter table [table] add column [field] blob;
+alter table [table] add column [field] enum('[value]', '[value]', '[value]');
+alter table [table] add column [field] geometry;
+alter table [table] add column [field] json;
+alter table [table] add column [field] multipoint;
+alter table [table] add column [field] point;
+alter table [table] add column [field] set('[value]', '[value]', '[value]');
+alter table [table] add column [field] text not null;
+alter table [table] add column [field] time;
+alter table [table] add column [field] timestamp;
+alter table [table] add column [field] varbinary([value]);
+alter table [table] add column [field] int not null;
+alter table [table] add column [field] varchar([value]) default '[value]';
+alter table [table] add column [field] boolean default [value];
+alter table [table] add column [field] datetime default current_timestamp;
+alter table [table] add column [field] float check ([field] >= [value]);
+alter table [table] add column [field] decimal([value],[value]) default [value];
+alter table [table] add column [field] varbinary([value]);
+alter table [table] add column [field] enum('[value]', '[value]', '[value]');
+alter table [table] add column [field] set('[value]', '[value]', '[value]');
+alter table [table] add column [field] generated always as ([field] * [value]) stored;
+alter table [table] add column [field] generated always as ([field] + [value]) virtual;
+
+
+alter table [table] modify column [field] bigint;
+alter table [table] modify column [field] bit;
+alter table [table] modify column [field] char([value]);
+alter table [table] modify column [field] decimal([value],[value]);
+alter table [table] modify column [field] double;
+alter table [table] modify column [field] float;
+alter table [table] modify column [field] longblob;
+alter table [table] modify column [field] longtext;
+alter table [table] modify column [field] mediumint;
+alter table [table] modify column [field] numeric([value],[value]);
+alter table [table] modify column [field] smallint;
+alter table [table] modify column [field] tinyint;
+alter table [table] modify column [field] char([value]);
+alter table [table] modify column [field] bigint unsigned;
+alter table [table] modify column [field] smallint zerofill;
+alter table [table] modify column [field] double precision;
+alter table [table] modify column [field] time default '[value]';
+alter table [table] modify column [field] year default [value];
+alter table [table] modify column [field] tinyint([value]) default [value];
+alter table [table] modify column [field] bit([value]);
+alter table [table] modify column [field] binary([value]);
+alter table [table] modify column [field] varbinary([value]);
+alter table [table] modify column [field] mediumblob;
+alter table [table] modify column [field] mediumtext;
+alter table [table] modify column [field] tinyblob;
+alter table [table] modify column [field] tinytext;
+alter table [table] modify column [field] point;
+alter table [table] modify column [field] geometry;
+alter table [table] modify column [field] multipoint;
+alter table [table] modify column [field] multilinestring;
+alter table [table] modify column [field] multipolygon;
+alter table [table] modify column [field] geometrycollection;
+
+
+alter table [table] change column [field] [field] date;
+alter table [table] change column [field] [field] boolean;
+alter table [table] change column [field] [field] double;
+alter table [table] change column [field] [field] float([value],[value]);
+alter table [table] change column [field] [field] numeric([value],[value]);
+alter table [table] change column [field] [field] timestamp;
+alter table [table] change column [field] [field] varchar([value]);
+alter table [table] rename column [field] to [field];
+
+
+alter table [table] drop column [field];
+
+
+alter table [table] add constraint fk_[field] foreign key ([field]) references [table]([field]);
+alter table [table] add foreign key ([field]) references [table]([field]) on delete [value];
+alter table [table] add check ([field] >= [value]);
+alter table [table] add primary key ([field]);
+alter table [table] add unique ([field]);
+alter table [table] add index idx_[field] ([field]);
+
+
+alter table [table] drop constraint fk_[field];
+alter table [table] drop foreign key fk_[field];
+alter table [table] drop check [value];
+alter table [table] drop primary key;
+alter table [table] drop index idx_[field];
+alter table [table] drop unique [field];
+
+alter table [table] convert to character set [value] collate [value];
+alter table [table] engine = [value];
+alter table [table] auto_increment = [value];
+alter table [table] comment = '[value]';
+alter table [table] enable keys;
+alter table [table] disable keys;
+alter table [table] rename index idx_[field] to idx_[field];
+
+alter table [table] add partition (partition [value] values less than ([value]));
+alter table [table] drop partition [value];
+
+alter table [table] alter column [field] drop default;
+alter table [table] alter column [field] set default [value];
+alter table [table] alter column [field] set default current_timestamp;
+
+drop table if exists [table];
+drop database [table];
+drop database if exists [table];
+alter table [table] drop column [field];
+drop index [field] on [table];
+drop index if exists [field] on [table];
+alter table [table] drop index [field];
+drop view [table];
+drop view if exists [table];
+drop function [table];
+drop function if exists [table];
+drop procedure [table];
+drop procedure if exists [table];
+drop trigger [table];
+drop trigger if exists [table];
+drop event [table];
+drop event if exists [table];
+
+DROP INDEX [value] ON [table];
+
+grant [value] on [value].[value] to '[value]'@'[value]';
+grant [value], [value], [value] on [value].[value] to '[value]'@'[value]';
+revoke [value] on [value].[value] from '[value]'@'[value]';
+revoke [value], [value], [value] on [value].[value] from '[value]'@'[value]';
+
+alter table [table] force row format = compact;
+alter table [table] rename index idx_old_name to idx_new_name;
+
+drop function if exists [table] cascade;
+drop procedure if exists [table] restrict;
+drop tablespace [table] including contents and datafiles;
+drop database [table] force;
+drop table [table] purge;
+drop sequence [table] restrict;
+drop policy [table] on [table];
+drop masking policy [table];
+drop audit policy [table];
+drop resource group [table];
+drop resource group if exists [table];
+drop service [table];
+drop service if exists [table];
+drop role [table] cascade;
+drop user [table] cascade;
+drop profile [table];
+drop keystore [table];
+drop secret [table];
+drop encryption key [table];
+drop database link [table];
+drop workload group [table];
+drop session [table];
+drop connection [table];
+drop user mapping for [table];
+
+grant system_user on *.* to '[value]'@'localhost';
+grant system_variables_admin on *.* to '[value]'@'%';
+revoke system_user on *.* from '[value]'@'localhost';
+revoke system_variables_admin on *.* from '[value]'@'%';

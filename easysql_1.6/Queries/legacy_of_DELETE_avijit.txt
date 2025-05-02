@@ -1,0 +1,869 @@
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value];
+DELETE FROM [table] WHERE [field] BETWEEN (SELECT MIN([field]) FROM [table]) AND (SELECT MAX([field]) FROM [table]);
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND (SELECT MAX([field]) FROM [table]);
+DELETE FROM [table] WHERE [field] BETWEEN (SELECT MIN([field]) FROM [table]) AND [value];
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] AND [field] IS NOT NULL;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] OR [field] IS NULL;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] AND [field] <> [value];
+DELETE FROM [table] WHERE [field] BETWEEN (SELECT MIN([field]) FROM [table]) AND [value] AND EXISTS (SELECT 1 FROM [table] WHERE [field] = [value]);
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND (SELECT MAX([field]) FROM [table]) AND NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value]);
+DELETE FROM [table] WHERE [field] BETWEEN (SELECT AVG([field]) FROM [table]) AND [value];
+DELETE FROM [table] WHERE [field] BETWEEN (SELECT MIN([field]) FROM [table] WHERE [field] > [value]) AND (SELECT MAX([field]) FROM [table] WHERE [field] < [value]);
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] ORDER BY [field] ASC;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] ORDER BY [field] DESC;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] LIMIT [value];
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] OFFSET [value];
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] RETURNING [field];
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] CASCADE;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] RESTRICT;
+
+
+DELETE FROM [table] WHERE [field] IN ([value], [value]);
+DELETE FROM [table] WHERE [field] IN ([value], [value], [value]);
+DELETE FROM [table] WHERE [field] IN ([value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] = [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] <> [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] < [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] > [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] <= [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] >= [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] BETWEEN [value] AND [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] IS NULL);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] IS NOT NULL);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE COALESCE([field], [value]) = [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE NULLIF([field], [value]) IS NULL);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] ORDER BY [field] ASC LIMIT [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] ORDER BY [field] DESC LIMIT [value]);
+DELETE FROM [table] WHERE [field] IN (SELECT DISTINCT [field] FROM [table]);
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value]));
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value]));
+DELETE FROM [table] WHERE [field] IN (SELECT [field] FROM [table] WHERE MATCH([field]) AGAINST ('[term]'));
+
+
+DELETE FROM [table] WHERE [field] LIKE '[pattern]';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]%';
+DELETE FROM [table] WHERE [field] LIKE '%[pattern]';
+DELETE FROM [table] WHERE [field] LIKE '%[pattern]%';
+DELETE FROM [table] WHERE [field] LIKE '_[pattern]';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]_';
+DELETE FROM [table] WHERE [field] LIKE '_[pattern]_';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]%' ESCAPE '\';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' COLLATE utf8_general_ci;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' COLLATE utf8_bin;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND [field] IS NOT NULL;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' OR [field] IS NULL;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND LENGTH([field]) > [value];
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND LENGTH([field]) < [value];
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' ORDER BY [field] ASC LIMIT [value];
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' ORDER BY [field] DESC LIMIT [value];
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND EXISTS (SELECT 1 FROM [table] WHERE [field] LIKE '[pattern]');
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value]);
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND [field] IN (SELECT [field] FROM [table] WHERE [field] LIKE '[pattern]');
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND [field] NOT IN (SELECT [field] FROM [table] WHERE [field] LIKE '[pattern]');
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND COALESCE([field], '[default]') LIKE '[pattern]';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND NULLIF([field], '[value]') IS NULL;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND CAST([field] AS CHAR) LIKE '[pattern]';
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' AND MATCH([field]) AGAINST ('[pattern]');
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' RETURNING [field];
+
+
+DELETE FROM [table] WHERE [field] IS NULL;
+DELETE FROM [table] WHERE [field] IS NOT NULL;
+DELETE FROM [table] WHERE COALESCE([field], [value]) IS NULL;
+DELETE FROM [table] WHERE COALESCE([field], [value]) IS NOT NULL;
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NULL;
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NOT NULL;
+DELETE FROM [table] WHERE [field] IS NULL AND [field] = [value];
+DELETE FROM [table] WHERE [field] IS NULL OR [field] = [value];
+DELETE FROM [table] WHERE [field] IS NULL ORDER BY [field] ASC;
+DELETE FROM [table] WHERE [field] IS NULL ORDER BY [field] DESC;
+DELETE FROM [table] WHERE [field] IS NULL LIMIT [value];
+DELETE FROM [table] WHERE [field] IS NULL OFFSET [value];
+DELETE FROM [table] WHERE [field] IS NULL RETURNING [field];
+DELETE FROM [table] WHERE [field] IS NULL AND EXISTS (SELECT 1 FROM [table] WHERE [field] IS NULL);
+DELETE FROM [table] WHERE [field] IS NULL AND NOT EXISTS (SELECT 1 FROM [table] WHERE [field] IS NOT NULL);
+DELETE FROM [table] WHERE [field] IS NULL AND [field] IN (SELECT [field] FROM [table] WHERE [field] IS NULL);
+DELETE FROM [table] WHERE [field] IS NULL AND [field] NOT IN (SELECT [field] FROM [table] WHERE [field] IS NOT NULL);
+DELETE FROM [table] WHERE [field] IS NULL AND LENGTH([field]) > [value];
+DELETE FROM [table] WHERE [field] IS NULL AND LENGTH([field]) < [value];
+DELETE FROM [table] WHERE [field] IS NULL AND MATCH([field]) AGAINST ('[term]');
+DELETE FROM [table] WHERE [field] IS NULL AND [field] LIKE '[pattern]';
+DELETE FROM [table] WHERE [field] IS NULL AND [field] BETWEEN [value] AND [value];
+DELETE FROM [table] WHERE [field] IS NULL PARTITION ([value]);
+DELETE FROM [table] WHERE [field] IS NULL COMMIT;
+DELETE FROM [table] WHERE [field] IS NULL ROLLBACK;
+
+
+DELETE FROM [table] WHERE [field] IS NOT NULL;
+DELETE FROM [table] WHERE [field] IS NULL;
+DELETE FROM [table] WHERE COALESCE([field], [value]) IS NOT NULL;
+DELETE FROM [table] WHERE COALESCE([field], [value]) IS NULL;
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NOT NULL;
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NULL;
+DELETE FROM [table] WHERE [field] IS NOT NULL AND [field] = [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL OR [field] = [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL ORDER BY [field] ASC;
+DELETE FROM [table] WHERE [field] IS NOT NULL ORDER BY [field] DESC;
+DELETE FROM [table] WHERE [field] IS NOT NULL LIMIT [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL OFFSET [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL RETURNING [field];
+DELETE FROM [table] WHERE [field] IS NOT NULL AND EXISTS (SELECT 1 FROM [table] WHERE [field] IS NOT NULL);
+DELETE FROM [table] WHERE [field] IS NOT NULL AND NOT EXISTS (SELECT 1 FROM [table] WHERE [field] IS NULL);
+DELETE FROM [table] WHERE [field] IS NOT NULL AND [field] IN (SELECT [field] FROM [table] WHERE [field] IS NOT NULL);
+DELETE FROM [table] WHERE [field] IS NOT NULL AND [field] NOT IN (SELECT [field] FROM [table] WHERE [field] IS NULL);
+DELETE FROM [table] WHERE [field] IS NOT NULL AND LENGTH([field]) > [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL AND LENGTH([field]) < [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL AND MATCH([field]) AGAINST ('[term]');
+DELETE FROM [table] WHERE [field] IS NOT NULL AND [field] LIKE '[pattern]';
+DELETE FROM [table] WHERE [field] IS NOT NULL AND [field] BETWEEN [value] AND [value];
+DELETE FROM [table] WHERE [field] IS NOT NULL PARTITION ([value]);
+DELETE FROM [table] WHERE [field] IS NOT NULL COMMIT;
+DELETE FROM [table] WHERE [field] IS NOT NULL ROLLBACK;
+
+
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] = [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <> [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] < [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] > [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <= [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] >= [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] BETWEEN [value] AND [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IN ([value], [value]);
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] LIKE '[pattern]';
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NULL;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NOT NULL;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE COALESCE([table].[field], [value]) = [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE NULLIF([table].[field], [value]) IS NULL;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE CAST([table].[field] AS [type]) = [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE MATCH([table].[field]) AGAINST ('[term]');
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] ASC;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] DESC;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] LIMIT [value];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] RETURNING [field];
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] COMMIT;
+DELETE [table] FROM [table] INNER JOIN [table] ON [table].[id] = [table].[id] ROLLBACK;
+
+
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] = [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <> [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] < [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] > [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <= [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] >= [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] BETWEEN [value] AND [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IN ([value], [value]);
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] LIKE '[pattern]';
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NULL;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NOT NULL;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE COALESCE([table].[field], [value]) = [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE NULLIF([table].[field], [value]) IS NULL;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE CAST([table].[field] AS [type]) = [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE MATCH([table].[field]) AGAINST ('[term]');
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] ASC;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] DESC;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] LIMIT [value];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] RETURNING [field];
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] COMMIT;
+DELETE [table] FROM [table] LEFT JOIN [table] ON [table].[id] = [table].[id] ROLLBACK;
+
+
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] = [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <> [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] < [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] > [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] <= [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] >= [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] BETWEEN [value] AND [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IN ([value], [value]);
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] LIKE '[pattern]';
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NULL;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE [table].[field] IS NOT NULL;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE COALESCE([table].[field], [value]) = [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE NULLIF([table].[field], [value]) IS NULL;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE CAST([table].[field] AS [type]) = [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE MATCH([table].[field]) AGAINST ('[term]');
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [table].[field] = [value]);
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] ASC;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] ORDER BY [table].[field] DESC;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] LIMIT [value];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] RETURNING [field];
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] COMMIT;
+DELETE [table] FROM [table] RIGHT JOIN [table] ON [table].[id] = [table].[id] ROLLBACK;
+
+
+DELETE FROM [table] WHERE EXISTS [value];
+
+
+
+
+
+DELETE FROM [table] LIMIT [value];
+
+DELETE FROM [table] ORDER BY [field] ASC LIMIT [value];
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] < [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] > [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] <= [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] >= [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] IN ([value], [value])
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] IS NULL
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] IS NOT NULL
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE COALESCE([field], [value]) = [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE NULLIF([field], [value]) IS NULL
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE CAST([field] AS [type]) = [value]
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE MATCH([field]) AGAINST ('[term]')
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] = [value])
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] NOT IN (SELECT [field] FROM [table] WHERE [field] = [value])
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+ORDER BY [field] ASC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+ORDER BY [field] DESC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+ORDER BY [field] ASC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+ORDER BY [field] DESC
+LIMIT [value];
+
+DELETE FROM [table]
+LIMIT [value]
+RETURNING [field];
+
+DELETE FROM [table]
+LIMIT [value]
+COMMIT;
+
+DELETE FROM [table]
+LIMIT [value]
+ROLLBACK;
+
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] IS NULL
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE [field] IS NOT NULL
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE COALESCE([field], [value]) = [value]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE MATCH([field]) AGAINST ('[term]')
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value];
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value]
+RETURNING [field];
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value]
+COMMIT;
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value] OFFSET [value]
+ROLLBACK;
+
+
+DELETE FROM [table]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] < [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] > [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] IN ([value], [value])
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] IS NULL
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] IS NOT NULL
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE COALESCE([field], [value]) = [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE NULLIF([field], [value]) IS NULL
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE CAST([field] AS [type]) = [value]
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE MATCH([field]) AGAINST ('[term]')
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] = [value])
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+WHERE [field] NOT IN (SELECT [field] FROM [table] WHERE [field] = [value])
+ORDER BY [field] ASC;
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+RETURNING [field];
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+LIMIT [value]
+RETURNING [field];
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+COMMIT;
+
+DELETE FROM [table]
+ORDER BY [field] ASC
+ROLLBACK;
+
+
+DELETE FROM [table]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+LIMIT [value];
+
+DELETE FROM [table]
+WHERE [field] = [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] < [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] > [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] IN ([value], [value])
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] IS NULL
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] IS NOT NULL
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE COALESCE([field], [value]) = [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE NULLIF([field], [value]) IS NULL
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE CAST([field] AS [type]) = [value]
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE MATCH([field]) AGAINST ('[term]')
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] = [value])
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+WHERE [field] NOT IN (SELECT [field] FROM [table] WHERE [field] = [value])
+ORDER BY [field] DESC;
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+RETURNING [field];
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+LIMIT [value]
+RETURNING [field];
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+COMMIT;
+
+DELETE FROM [table]
+ORDER BY [field] DESC
+ROLLBACK;
+
+
+DELETE FROM [table]
+RETURNING [field];
+
+DELETE FROM [table]
+RETURNING *;
+
+DELETE FROM [table]
+WHERE [field] = [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] < [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] > [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] <= [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] >= [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] IN ([value], [value])
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] IS NULL
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] IS NOT NULL
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE COALESCE([field], [value]) = [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE NULLIF([field], [value]) IS NULL
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE CAST([field] AS [type]) = [value]
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE MATCH([field]) AGAINST ('[term]')
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE NOT EXISTS (SELECT 1 FROM [table] WHERE [field] = [value])
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] IN (SELECT [field] FROM [table] WHERE [field] = [value])
+RETURNING [field];
+
+DELETE FROM [table]
+WHERE [field] NOT IN (SELECT [field] FROM [table] WHERE [field] = [value])
+RETURNING [field];
+
+
+DELETE FROM [table]
+WHERE [field] = [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] <> [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] < [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] > [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] <= [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] >= [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] BETWEEN [value] AND [value]
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] IN ([value], [value])
+CASCADE;
+
+DELETE FROM [table]
+WHERE [field] LIKE '[pattern]'
+CASCADE;
+
+DELETE FROM [table] WHERE [field] IS NULL CASCADE;
+
+DELETE FROM [table] WHERE [field] IS NOT NULL CASCADE;
+
+
+DELETE FROM [table] WHERE [field] = [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] <> [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] < [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] > [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] <= [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] >= [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value] RESTRICT;
+
+DELETE FROM [table] WHERE [field] IN ([value], [value]) RESTRICT;
+
+DELETE FROM [table] WHERE [field] LIKE '[pattern]' RESTRICT;
+
+DELETE FROM [table] WHERE [field] IS NULL RESTRICT;
+
+DELETE FROM [table] WHERE [field] IS NOT NULL RESTRICT;
+
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) = [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) <> [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) < [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) > [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) <= [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) >= [value];
+
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) BETWEEN [value] AND [value];
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) IN ([value], [value]);
+
+DELETE FROM [table] WHERE COALESCE([field], [default_value]) LIKE '[pattern]';
+
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NULL;
+DELETE FROM [table] WHERE NULLIF([field], [value]) IS NOT NULL;
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) = [value];
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) <> [value];
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) < [value];
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) > [value];
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) <= [value];
+
+DELETE FROM [table] WHERE NULLIF([field], [value]) >= [value];
+
+
+DELETE FROM [table] WHERE CAST([field] AS [type]) <> [value];
+
+DELETE FROM [table] WHERE CAST([field] AS [type]) < [value];
+
+DELETE FROM [table] WHERE CAST([field] AS [type]) > [value];
+
+DELETE FROM [table] WHERE CAST([field] AS [type]) <= [value];
+
+DELETE FROM [table] WHERE CAST([field] AS [type]) >= [value];
+
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]' IN NATURAL LANGUAGE MODE);
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]' IN BOOLEAN MODE);
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('+[term] -[term]' IN BOOLEAN MODE);
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('"[term1] [term2]"' IN NATURAL LANGUAGE MODE);
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]') AND [field] = [value];
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]') OR [field] = [value];
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]') AND [field] IS NOT NULL;
+
+DELETE FROM [table] WHERE MATCH([field]) AGAINST ('[term]') AND [field] BETWEEN [value] AND [value];
+
+DELETE FROM [table] START WITH [field] = [value] CONNECT BY PRIOR [id] = [parent_id] AND [field] > [value];
+
+DELETE FROM [table] START WITH [field] = [value] CONNECT BY PRIOR [id] = [parent_id] AND [field] < [value];
+
+DELETE FROM [table] START WITH [field] = [value] CONNECT BY PRIOR [id] = [parent_id] AND [field] BETWEEN [value] AND [value];
+
+DELETE FROM [table] START WITH [field] = [value] CONNECT BY PRIOR [id] = [parent_id] AND [field] IS NOT NULL;
+
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] = [value];
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] <> [value];
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] < [value];
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] > [value];
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] BETWEEN [value] AND [value];
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] IN ([value], [value]);
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] LIKE '[pattern]';
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] IS NULL;
+
+DELETE FROM [table] PARTITION ([partition_name]) WHERE [field] IS NOT NULL;
+
+
+DELETE IGNORE FROM [table] WHERE [field] = [value];
+DELETE IGNORE FROM [table] WHERE [field] < [value];
+DELETE IGNORE FROM [table] WHERE [field] > [value];
+DELETE IGNORE FROM [table] WHERE [field] BETWEEN [value] AND [value];
+DELETE IGNORE FROM [table] WHERE [field] IN ([value], [value]);
+DELETE IGNORE FROM [table] ORDER BY [field] ASC LIMIT [value];
+
+
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] = [value];
+COMMIT;
+BEGIN;
+DELETE FROM [table] WHERE [field] IS NOT NULL;
+COMMIT;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] < [value];
+COMMIT;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] > [value];
+COMMIT;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value];
+COMMIT;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] IN ([value], [value]);
+COMMIT;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]';
+COMMIT;
+
+
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] = [value];
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] IS NOT NULL;
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] < [value];
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] > [value];
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] BETWEEN [value] AND [value];
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] IN ([value], [value]);
+ROLLBACK;
+BEGIN TRANSACTION;
+DELETE FROM [table] WHERE [field] LIKE '[pattern]';
+ROLLBACK;
+
