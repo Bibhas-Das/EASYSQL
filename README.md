@@ -18,15 +18,15 @@ EASYSQL is a terminal-based tool designed to help beginners write correct SQL qu
 
 > 📌 **Suggestion Prompting**  
 Real-time keyword and clause suggestions as the user types.  
-![Suggestion Prompting](Documentation/Screen_shot/detect_exack_words.png)
+![Suggestion Prompting](Images/detect_exack_words.png)
 
 > 📌 **Schema-Aware Completion**  
 Displays relevant table/column names pulled from the connected database.  
-![Schema Completion](Documentation/Screen_shot/fifth.png)
+![Schema Completion](Images/fifth.png)
 
 > 📌 **Automatic Corrections**  
 Corrects syntax issues like missing semicolons or unmatched parentheses.  
-![Auto Correction](Documentation/Screen_shot/correction.png)
+![Auto Correction](Images/correction_img.png)
 
 ---
 
