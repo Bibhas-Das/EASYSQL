@@ -121,6 +121,14 @@ sudo chmod +x install.sh
 * It will automaticly copy all nessary file and folders to /opt/easysql folder  and configured
 
 * Just make sure that you have already a mysql/mariadb server install in your system and has a already a database.
+
+* [Optional] If you face trouble to install mysql/mariadb then go to help folder and run the mysql_setup.sh
+
+```bash
+sudo sh mysql_setup.sh
+```
+It will downlaod , setup and import a dummy database
+
 * Provide the database user name, password, and database name
 
 * Then It is ready to run
