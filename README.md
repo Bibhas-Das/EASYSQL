@@ -64,15 +64,17 @@ Corrects syntax issues like missing semicolons or unmatched parentheses.
 ## 🏗 Architecture Overview
 
 High-level architecture showing user interaction, suggestion engine, and database connection.  
-![Architecture](Documentation/Diagram/use_case.png)
+![Architecture](Images/use_case.png)
 
 ---
 
 ## 🧩 Methodology
 
 Includes use case diagrams, suggestion process logic, and backend workflow.  
-![Workflow](Documentation/Diagram/overal_steps..png)
+![Workflow](Images/overal_steps..png)
 
+Also prove basic suggestions 
+![Correction](Images/correction.png)
 ---
 
 ## 🧱 Limitations
