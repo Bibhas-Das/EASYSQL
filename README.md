@@ -85,7 +85,7 @@ Also prove basic suggestions
 
 ---
 
-## 🚀 Future Scope
+##  Future Scope
 
 - PostgreSQL and Oracle DB support
 - Natural language to SQL conversion
@@ -93,6 +93,75 @@ Also prove basic suggestions
 - GUI version for non-terminal users
 
 ---
+
+
+##  Installation
+
+* Downlaod the repository
+
+```bash
+git clone https://github.com/Bibhas-Das/EASYSQL.git
+```
+
+Or downlaod teh Zip file
+
+* Go to EASYSQL/install folder
+
+```bash
+cd EASYSQL/install
+```
+
+* There install.sh file si there just run it
+
+```bash
+sudo chmod +x install.sh
+./install.sh
+```
+
+* It will automaticly copy all nessary file and folders to /opt/easysql folder  and configured
+
+* Just make sure that you have already a mysql/mariadb server install in your system and has a already a database.
+* Provide the database user name, password, and database name
+
+* Then It is ready to run
+
+```bash
+easysql.sh
+```
+
+* You can run this application from anywhere by your terminal with your curent user
+* All details and logs will be store on that particular folder only you can easyly visit teh location "/opt/easysql"
+---
+
+#  Uninstallation
+
+* To uninstallation just remove the easysql folder from your system. 
+
+```bash
+sudo -rm /opt/easysql
+```
+
+* And remove the line form your currect shell rc file
+
+ 
+ - First check your shell 
+ ```bash
+ echo $SHELL
+ ``` 
+- As example if you use bash shell, then open ~/.bashrc file form any text editor
+
+```bash
+nano ~/.bashrc
+```
+
+- Remove the line from last "export PATH=/opt/easysql:$PATH"
+
+- Then Ctrl+S for save
+- And Ctrl+X for exit
+
+* Now It is totaly uninstall from your system
+
+
 
 ## 🙏 Acknowledgements
 
